@@ -13,9 +13,9 @@ import datetime
 import signal
 from PIL import Image, ImageTk
 
-rubbishExt = [".tmp", ".bak", ".old", ".wbk", ".xlk", "._mp", ".log", ".gid", ".chk", ".syd", ".$$$", ".@@@", ".~*"]
-
-
+str = """
+選定資料夾，將其中的 jfif 圖片批量轉換為後綴名批量轉換為 jpg
+"""
 class Window:
     def __init__(self):
         self.root = tkinter.Tk()
@@ -43,13 +43,16 @@ class Window:
         self.flist = tkinter.Text(self.root)
         self.flist.place(x=10,y=10,width=780,height=550)
 
+
+        self.flist.insert(tkinter.END, str +'\n')
+
         self.vscroll = tkinter.Scrollbar(self.flist)
         self.vscroll.pack(side="right", fill="y")
         self.flist["yscrollcommand"] = self.vscroll.set
         self.vscroll["command"] = self.flist.yview()
 
     def MainLoop(self):
-        self.root.title("NNAAMMEE")
+        self.root.title("JFIF2JPG")
         self.root.minsize(800,600)
         self.root.maxsize(800,600)
         self.root.mainloop()

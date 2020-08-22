@@ -60,14 +60,8 @@ class Window:
     def dooo(self):
         filedir = filedialog.askdirectory(title='Pick a directory')
         self.flist.insert(tkinter.END, "Folder is: " + filedir +'\n')
-        
-        for root, dirs, files in os.walk(filedir):
-            for file in files:
-                filepath = os.path.join(root, file)
-                fileper, fileext = os.path.splitext(filepath)  # 分離拓展名
-                if fileext == '.jfif':
-                    os.rename(filepath, fileper + '.jpg')
-                    self.flist.insert(tkinter.END, fileper+'.jpg'+'\n')
+
+        # dosomething        
 
 
 if __name__ == "__main__":
