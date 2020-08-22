@@ -1,9 +1,9 @@
 __author__ = 'a1261'
 import tkinter
-import tkinter.messagebox   #输出信息
+import tkinter.messagebox 
 import os, os.path
-import threading            #多线程
-import tkinter.simpledialog #接受输入信息
+import threading  
+import tkinter.simpledialog 
 from tkinter import filedialog
 from tkinter import *
 from hashlib import *
@@ -12,9 +12,6 @@ import time
 import datetime
 import signal
 from PIL import Image, ImageTk
-
-rubbishExt = [".tmp", ".bak", ".old", ".wbk", ".xlk", "._mp", ".log", ".gid", ".chk", ".syd", ".$$$", ".@@@", ".~*"]
-
 
 class Window:
     def __init__(self):
