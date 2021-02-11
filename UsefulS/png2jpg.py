@@ -1,28 +1,21 @@
-import cv2
+from PIL import Image
 import os
-import numpy as np
+
+def jpg2png(path):
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            filepath = os.path.join(root, file)
+            fileper, fileext = os.path.splitext(filepath)
+            if fileext == ('.png' or '.PNG'):
+                img = Image.open(filepath).convert("RGB")
+                img.save(filepath.replace('png', 'jpg'))
+                # src = cv2.imread(filepath)
+                print(filepath.replace('png', 'jpg'))
+                # cv2.imwrite(filepath.replace('png', 'jpg'), src)
+                # cv2.imwrite('1.jpg', src)
+                os.remove(filepath)
 
 
-def cv_imread(file_path):
-    cv_img = cv2.imdecode(np.fromfile(filepath, dtype=np.uint8), -1)
-    return cv_img
-
-
-def cv_imwrite(file_path, img):
-    cv2.imencode('.jpg', img)[1].tofile(file_path)
-
-
-for root, dirs, files in os.walk('./'):
-    for file in files:
-        filepath = os.path.join(root, file)
-        fileper, fileext = os.path.splitext(filepath)
-        if fileext == '.png':
-            print(filepath)
-            src = cv_imread(filepath)
-            cv_imwrite(filepath.replace('png', 'jpg'), src)
-            os.remove(filepath)
-        elif fileext == '.PNG':
-            print(filepath)
-            src = cv_imread(filepath)
-            cv_imwrite(filepath.replace('png', 'jpg'), src)
-            os.remove(filepath)
+if __name__ == "__main__":
+    path = r"C:\Users\Administrator\Desktop\GTA4"
+    jpg2png(path)
